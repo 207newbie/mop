@@ -1,0 +1,21 @@
+.divided-card, .divided-card>.card-body{
+    padding:0px;
+    border-radius: 0px;
+    border: 0px;
+}
+.card-section{
+    padding: 30px;
+}
+.col-white{
+  background-color: #ffffff;
+  margin: 0px
+}
+
+.col-blue{
+  background-color: #83C4C8;
+  margin: 0px
+}
+
+.white-line{
+    border-top: 1px solid #edf8f8;
+}
