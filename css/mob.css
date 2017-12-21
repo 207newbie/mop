@@ -1,4 +1,7 @@
-.divided-card, .divided-card>.card-body{
+.card-task,
+.card-task>.card-body,
+.divided-card, 
+.divided-card>.card-body{
     padding:0px;
     border-radius: 0px;
     border: 0px;
@@ -18,4 +21,9 @@
 
 .white-line{
     border-top: 1px solid #edf8f8;
+}
+
+footer{
+	position: fixed;
+	bottom: 0px;
 }
