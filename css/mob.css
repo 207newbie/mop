@@ -1,10 +1,14 @@
-.card-task,
-.card-task>.card-body,
 .divided-card, 
 .divided-card>.card-body{
     padding:0px;
     border-radius: 0px;
     border: 0px;
+}
+
+.card-details,
+.card-details>.card-body{
+	padding:0px;
+    border-radius: 0px;
 }
 .card-section{
     padding: 30px;
@@ -26,4 +30,17 @@
 footer{
 	position: fixed;
 	bottom: 0px;
+}
+
+.hidden{
+     opacity:0;
+}
+.visible{
+     opacity:1;
+}
+
+#mob-card{
+	position: sticky;
+  	top: 0px;
+  	z-index: 1000;
 }
