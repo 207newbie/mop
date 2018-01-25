@@ -1,137 +1,283 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <title>MOBIQUOS</title>
-    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<title>Plan Chile 30/30</title>
+		<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/animate/animate.css">
+		<link rel="stylesheet" href="vendor/fullpage/jquery.fullpage.min.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<!-- Nav bar -->
+		<div id="myNav" class="overlay">
+			<!-- Overlay content -->
+			<div class="overlay-content">
+				<a href="#home">
+					<div><img class="menu-icon" src="images/que_es_regular.svg" alt=""></div>
+					<div><strong>¿Qúe es?</strong></div>
+				</a>
+				<a href="#mapas">
+					<div><img class="menu-icon" src="images/mapa_regular.svg" alt=""></div>
+					<div><strong>Mapas</strong></div>
+				</a>
+				<a href="#">
+					<div><img class="menu-icon" src="images/participa_regular.svg" alt=""></div>
+					<div><strong>Participa</strong></div>
+				</a>
+				<a href="#">
+					<div><img class="menu-icon" src="images/download_regular.svg" alt=""></div>
+					<div><strong>Descargas</strong></div>
+				</a>
+				<!-- Button to close the overlay navigation -->
+			</div>
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="images/close.png" alt=""></a>
+		</div>
 
-    <link rel="stylesheet" href="css/mob.css">
-  </head>
-  <body>
+		<div id="overlay-download" class="overlay">
+			<!-- Overlay content -->
+			<div class="overlay-content">
+				<div>Descargar el mapa de las iniciativas estratégicas</div>
+				<div>
+					<img src="images/info.png" alt="">
+					<img src="images/close.png" alt="" onclick="closeNav()">
+				</div>
+			</div>
+		</div>
 
-    <div class="container">
-      
-      <div id="section-top">
-        <div class="card divided-card" id="mob-card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12 col-sm-5 col-md-4 col-white">
-                <div class="card-section text-center">
-                  <img class="img-fluid" src="images/mobiquos_m.png">
-                </div>
-              </div>
-              <div class="col-12 col-sm-7 col-md-8 col-blue">
-                <div class="card-section text-center">
-                  <img class="img-fluid" src="images/mobiquos_full.png">
-                  <hr class="white-line">
-                  <p class="card-title text-justify lead">Empresa especialista en la entrega de soluciones integrales de informática.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+		<div id="overlay-legend" class="overlay">
+			<!-- Overlay content -->
+			<div class="overlay-content">
+				<div class="legend">
+				 	<h2>Simbología</h2>
+				 	<hr align="left">
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Cuidado y uso eficiente a los recursos hidricos</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Integración social y territorial</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Calidad de vida</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Competitividad y desarrollo económico</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Conversatorio grupo de especialistas</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Talleres regionales</span>
+				  </div>
+				  <div>
+					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+					  <span class="legend-text">Consultas</span>
+				  </div>
+				</div> 
+				<div class="legend-close-button">
+					<img src="images/arrow_right_regular.svg" alt="" onclick="closeLegendOverlay()">
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			
+			<div id="button-header" class="header">
+				<img class="btn-up" src="images/angle_down_regular.svg" alt="">
+			</div>
 
-        <div class="card divided-card mb-3">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12 col-sm-5 col-md-4 col-blue">
-                <div class="card-section text-center">
-                  <h2 class="card-title"></h2>
-                </div>
-              </div>
-              <div class="col-12 col-sm-7 col-md-8 col-white">
-                <div class="card-section text-justify">
-                  Mobiquos, Servicios integrales de informática, fue fundada por un grupo diverso de profesionales del rubro de la tecnología, cuyo ámbito de investigación y desarrollo se centra en productos y servicios basados en movilidad, interfaces nuevas, calidad de software, ubicuidad y sistemas integrados.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <hr>
-        <div class="card-group">
-          <div class="col-6 card border-success mb-3">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-          </div>
+			<div class="header" id="main-header">
+				<h3 >
+					<span id="title-header">
+						
+					</span>
+					<span id="menu-toggle">
+						<a href="javascript:void(0)" class="openbtn" onclick="openNav()"><img src="images/menu.png" alt=""></a>
+					</span>
+				</h3>
+			</div>
+			<div class="section" data-title="" data-anchor="home">
+				<h1 class="huge">Plan Chile 30/30 <br> Obras del Díalogo</h1>
+				<p>El gran acuerdo del mundo público, privado, académico y ciudadano en materias de Infraestructura y Agua para el 2030.</p>
+			</div>
 
-          <div class="col-6 card border-success mb-3">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-          </div>
+			<div class="section h-view-wrapper" data-title="¿Qué es?" data-anchor="que-es">
+				<div class="slide">
+					<h1>¿Qué es el plan Chile 30/30?</h1>
+					<hr align="left">
+					<p>El plan Chile 30/30 Obras Públicas y Agua para el Desarrollo, es un instrumento de planificación estratégico de largo plazo, con una visión de desarrollo país, además de visiones territoriales por macrozona y regiones donde se definen los objetivos de largo plazo coherentes y logrables en el ámbito de infraestructura y agua, y que se reflejan en iniciativas estratégicas consecuentes con dichas visiones.
+					</p>
+				</div>
+				<div class="slide">
+					<h2>Obras del Díalogo</h2>
+					<hr align="left">
+					<p>Planificación y mirada del territorio de manera integral 
+					</p>
+					<img src="" alt="Infografia" class="infografia">
+					<p>
+						<div>
+						<strong>30/30</strong>: Plan Chile 30/30
+						</div>
+						<div>
+						<strong>30 MIL</strong>: 30 mil ideas para Chile
+						</div>
+					</p>
+				</div>
+			</div>
 
-          <div class="col-6 card border-success mb-3">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-          </div>
+			<div class="section" data-title="Mapas" data-anchor="mapas">
+				<h1>Los Mapas: Un recorrido por el Plan Chile 30/30</h1>
+				<hr align="left">
+				<p>A través de siete mapas de Chile, recorre el proceso participativo del Plan Chile 30/30.
+				</p>
+				<div id="map-list">
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de Integración y conectividad</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de vulnerabilidades y el cambio climático</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de las visiones y desafíos</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de obras con mirada de futuro</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa del díalogo territorial</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de Iniciativas estratégicas</span>
+					</div>
+					<div>
+						<img src="images/comment.png" alt="">
+						<span>Mapa de la mirada OCDE</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" data-title="Mapas" data-anchor="mapas-detalle">
+				<div class="slide">
+					<h1>Mapa del díalogo territorial</h1>
+					<hr align="left">
+					<p>
+					Más de dos años de trabajo.<br>
+					 Mas de 400 instancias de conversaciones y debates. Más de 10 mil participantes. Miles de ideas en búsqueda de una visión de futuro.
+					<br>
+					<br>
+					Los territorios hablaron y el Ministerio de Obras Públicas escuchó para apotar, desde la creación de infraestructura, al desarrollo sostenible de Chile con miras al 2030.
+					</p>
+				</div>
+				<div class="slide">
+					<h2>Instituciones Participantes</h2>
+					<hr align="left">
+					
+				</div>
+				<div class="slide">
+					<h2>Instituciones Participantes</h2>
+					<hr align="left">
+					<p>El Plan Chile 30/30 es un proceso participativo público/privado, al que se ha unido el sector académico. Se ha construido de abajo hacia arriba (bottom-up), es decir, desde la escala regional a la macrozonal, y desde la macrozonal a la escala nacional.
+					</p>
+				</div>
+				<div class="slide">
+					<h2>Participaciones por actividad</h2>
+					<hr align="left">
+				</div>
+				<div class="slide">
+					<h2>Participaciones por actividad</h2>
+					<hr align="left">
+					<p>El objetivo es construir colectivamente iniciativas que nos permitan generar políticas públicas que consideren no sólo variables económicas, sino también aspectos de equidad, sostenibilidad e inclusión territorial, respetando las complejidades locales, tanto geográficas como sociales.
+					</p>
+				</div>
+				<div class="slide">
+					<h2>Participaciones por macrozona y género</h2>
+					<hr align="left">
+					<p>
+					</p>
+				</div>
+				<div class="slide">
+					<h2>Participaciones por macrozona y género</h2>
+					<hr align="left">
+					<p>La participación ciudadana en el ámbito territorial tiene una buena correlación con el porcentaje de población habitante en dichas regiones, mostrando mayores niveles de participación en la zona centro, donde nuestro país representa alta concentración de población y una menor participación de la macrozona austral, lugar menos denso del país.
+					</p>
+				</div>
+			</div>
 
-          <div class="col-6 card border-success mb-3">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-          </div>
-        </div>
-      </div>
 
-      <div id="section-details">
-        <div class="card mb-3 card-details">
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
+			<div class="section" data-title="Mapa de diálogo territorial" data-anchor="mapas-dialogo-territorial">
+				<!--ZOOM-->
+				<div class="map-section" id="map-zoombar">
+					<div>
+						<img src="images/zoom_regular.svg" alt="">
+					</div>
+					<div class="slider-wrapper">
+						<input type="range" id="zoom-slider" min="0" max="100" value="100" step="10">
+					</div>
+				</div>
+				<!--MAP-->
+				<div class="map-section" id="map-container">
+					<svg id="img-map" version="1.1" viewBox="0 0 100 200"
+					     xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+						<image xlink:href="images/mapa.png" x="0" y="0" height="100%" width="100%"/>
+					</svg>
+				</div>
+				<!--BUTTONS-->
+				<div class="map-section" id="map-toolbar">
+					<img src="images/info_regular.svg" alt="" onclick="openLegendOverlay()">
+					<img src="images/plus_regular.svg" alt="">
+					<img src="images/download_regular.svg" alt="" onclick="openDownloadOverlay()">
+					<img src="images/compartir_regular.svg" alt="">
+				</div>
+			</div>
+			
+			
+			<!-- FOOTERS -->
+			<div id="button-footer" class="footer">
+				<img class="btn-down" src="images/angle_down_regular.svg" alt="">
+			</div>
+			<div id="map-footer" class="hidden footer">
+				<div class="colored-bar" id="detail-bar">
+				</div>
+				<div class="footer-content">
+					<div class="line">
+						<h6 id="detail-zone">Macro zona norte</h6>
+					</div>
+					<div class="line">
+						<h2 id="detail-region">Arica y parinacota</h2>
+						<img class="btn-open-map-footer" src="images/angle_down_regular.svg" alt="">
+					</div>
+					<div class="footer-body">
+						<p class="p-small" id="detail-text">
+						</p>
+						<p id="detail-author"></p>
+					</div>
+					<div class="footer-footer">
+						<img class="btn-maximize" src="images/plus.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="card mb-3 card-details">
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
 
-        <div class="card mb-3 card-details">
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-
-        <div class="card mb-3 card-details">
-            <div class="card-body text-success">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="vendor/jquery/jquery-3.2.1.slim.min.js" ></script>
-    <script src="vendor/jquery/jquery.viewportchecker.min.js"></script>
-    <script src="vendor/popper/popper.min.js" ></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/mob.js"></script>
-  </body>
+		<!-- Optional JavaScript -->
+		<!-- jQuery -->
+		<script src="vendor/jquery/jquery.min.js" ></script>
+		<script src="vendor/fullpage/jquery.fullpage.min.js" ></script>
+		<script src="js/maps.json"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>
