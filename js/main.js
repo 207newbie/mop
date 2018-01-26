@@ -5,8 +5,8 @@ var MAPDATA = [
 		region  : "Arica y parinacota",
 		text   : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		author  : "Yolanda del Pilar Carrasco", 
-		x       : 40,
-		y       : 100,
+		x       : 700,
+		y       : 400,
 		src     : 'images/marker-face00.png',
 		srcMinus: 'images/marker-face00-minus.png',
 		color   : '#face00'
@@ -17,16 +17,24 @@ var MAPDATA = [
 		region  : "Arica y parinacota",
 		text   : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		author  : "Yolanda del Pilar Carrasco", 
-		x       : 30,
-		y       : 190,
+		x       : 1000,
+		y       : 800,
 		src     : 'images/marker-008c74.png',
 		srcMinus: 'images/marker-008c74-minus.png',
 		color   : '#008c74'
 	}
 ];
 
+
+function animate( time ) {
+	requestAnimationFrame( animate );
+	TWEEN.update( time );
+}
+
+
 $(document).ready(function(){	
 	loadData();
+	animate();
 
 	$(window).scroll(function(e){
 		//preventDefault();
@@ -54,54 +62,103 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.map-container').click(function(e){
+		let svgMap = $(this).find('svg');
+		let values = svgMap.attr('viewBox').split(" ").map(function(e){ return parseInt(e) });
+		var tweenObjectOriginal = { x: values[0], y: values[1], w: values[2], h: values[3]};
+		let maxHeight = $('body').css('height').replace('px', '');
+		let maxWidth = $('body').css('width').replace('px', '');
+		let verticalOffset   = (e.pageY * 100 / maxHeight);
+		let horizontalOffset = (e.pageX * 100 / maxWidth);
+
+		if (verticalOffset < 30 && values[1] >= -values[3]*1.5){
+			console.log("# subiendo");
+			let y = parseInt(values[1]) - (values[3]*0.2);
+			values[1] = y < 0 ? 0 : y;
+		}
+		else if (verticalOffset >= 50 && values[1] < values[3]*1.5){
+			console.log("# bajando");
+			let y = parseInt(values[1]) + (values[3]*0.2);
+			values[1] = y + (values[3]*0.2) > values[3]  ? values[3] - (values[3]*0.2) : y;
+		}
+		if (horizontalOffset < 30 && values[0] >= -values[2]){
+			console.log("# izquierda");
+			values[0] = parseInt(values[0]) - (values[2]*0.2);
+		}
+		else if (horizontalOffset >= 70 && values[0] < values[2]/2){
+			console.log("# derecha");
+			values[0] = parseInt(values[0]) + (values[2]*0.2);
+		}
+
+		var tweenObject = { x: values[0], y: values[1], w: values[2], h: values[3]};
+		var tween = new TWEEN.Tween(tweenObjectOriginal)
+	    	.to( tweenObject, 200)
+			.easing( TWEEN.Easing.Linear.None )
+			.onUpdate( function (object){
+				let values = [tweenObjectOriginal.x, tweenObjectOriginal.y, tweenObjectOriginal.w, tweenObjectOriginal.h]
+				.join(" ");
+				svgMap.attr('viewBox', values);
+			} )
+			.start();
+	});
+
 	$('#zoom-slider').change(function(e){
+
 		e.preventDefault();
-		let val      = (100 - $(this).val()) * 0.01;
-		let mapWidth = $('#img-map').css('width').replace('px', '');
-		
-		/*
-		$('#img-map').css({
-			'transform': 'scale('+(1 + val)+')',
+		let idMapa = $(this).data('target');
+		let val      = (100 - $(this).val()) / 100;
+
+		/* 1420 y 0.1717 podrian extraerse desde los atributos del svg y la imagen del mapa*/
+		let values = $('#'+idMapa).attr('viewBox').split(" ").map(function(e){ return parseInt(e)});
+		let height = $('#'+idMapa).css('height').replace('px', '');
+		if (values[1] < 0){
+			values[1] = 0;
+		}
+		values[2] = 1420 + 1420 * val;
+		values[3] = 8266 + 8266 * val;
+		$('#'+idMapa).attr('viewBox', values.join(" "));
+		$('#'+idMapa).css({
+			'transform' : 'scale('+ ( 1 + val ) +')',
 		});
-		$('.map-marker').each(function(e){
-			let top = $(this).css('top').replace('px', '');
-			let left = $(this).css('left').replace('px', '');
-			$(this).css({
-				top  : $(this).data('y') * (1 + val),
-				left : mapWidth + $(this).data('x') * (1 + val) 
-			});
+
+
+
+
+
+		$('#'+idMapa).find('.map-marker').each(function(e){
+			let index = $(this).attr('index');
+			$(this).attr('x', MAPDATA[index].x * ( 1 + val ));
+			$(this).attr('y', MAPDATA[index].y * ( 1 + val ));
 		});
-		*/
+
 	});
 	$('.btn-open-map-footer').click(toggleMapDetail);
 	$('.btn-maximize').click(maximizeMapDetail);
 	$('#button-footer').click(function(){
 		$.fn.fullpage.moveSectionDown();
 	});
-
 	$('.btn-up').click(function(){
 		$.fn.fullpage.moveSectionUp();
 	});
-
-	$('#map-container').on('click', '.map-marker', onMarkerClick);
+	$('.svg-map').on('click', '.map-marker', onMarkerClick);
 });
 
 function closeMarker(){
-	let index = $(this).data('index');
-	$(this).attr('src', MAPDATA[index].src);
+	let index = $(this).attr('index');
+	$(this).attr('href', MAPDATA[index].src);
 	$(this).removeClass('open');
 }
 
 function onMarkerClick(e){
-	let index = $(this).data('index');
+	let index = $(this).attr('index');
 	if ($(this).hasClass('open')){
-		$(this).attr('src', MAPDATA[index].src);
+		$(this).attr('href', MAPDATA[index].src);
 		$(this).removeClass('open');
 	}
 	else{
-		$('#map-container .map-marker.open').each(closeMarker);
+		$('.svg-map .map-marker.open').each(closeMarker);
 		$(this).addClass('open');
-		$(this).attr('src', MAPDATA[index].srcMinus);
+		$(this).attr('href', MAPDATA[index].srcMinus);
 	}
 	$('#detail-bar').html(MAPDATA[index].barTitle);
 	$('#detail-zone').html(MAPDATA[index].zone);
@@ -122,18 +179,18 @@ function updateMapDetailHeight(){
 }
 
 function loadData(){
-	let map = $('#map-container');
+	let map = $('#map-dialogo-territorial');
+	let values = map.attr('viewBox').split(" ").map(function(e){ return parseInt(e) });
 	for (var i = MAPDATA.length - 1; i >= 0; i--) {
-		let marker = $('<img class="map-marker">');
-		marker.attr('src', MAPDATA[i].src);
-		map.append(marker);
-		marker.data('index', i);
-		marker.data('x', MAPDATA[i].x);
-		marker.data('y', MAPDATA[i].y);
-		marker.css({
-			top   : MAPDATA[i].y,
-			left  : MAPDATA[i].x,
-		})
+		var img = document.createElementNS('http://www.w3.org/2000/svg','image');
+			img.setAttributeNS(null,'height', 220);
+			img.setAttributeNS(null,'width', 220);
+			img.setAttributeNS(null,'class','map-marker');
+			img.setAttributeNS('http://www.w3.org/1999/xlink','href', MAPDATA[i].src);
+			img.setAttributeNS(null,'x', MAPDATA[i].x);
+			img.setAttributeNS(null,'y', MAPDATA[i].y);
+			img.setAttributeNS(null,'index', i);
+		map.append(img);
 	}
 }
 

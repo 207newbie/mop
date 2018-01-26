@@ -382,8 +382,7 @@ h5{
 
 
 .map-zoombar, .map-toolbar{
-	z-index: 80;
-	vertical-align: top;
+	z-index: 10;
 }
 
 .map-toolbar{
@@ -412,6 +411,7 @@ h5{
 
 .map-zoombar .slider-wrapper{
 	margin-left: 15px;
+	width: 30px;
 }
 
 /* contenedor del mapa */
@@ -423,26 +423,27 @@ h5{
 	-webkit-overflow-scrolling: touch;
 	overflow-y: scroll;
 	overflow-x: scroll;
-	z-index: 70;
 }
 
 /* svg contenedor del mapa y los marcadores */
 .svg-map{
-	margin-top: 30px;
 	width: calc(100vw - 120px);
+	z-index: 100;
+    transform-origin: 70% 0%;
+    transform: translate(0px 0px 0px);
+}
+
+.svg-map .img-map{
 }
 
 /* marcador de punto de interes en mapa */
 .map-marker{
-	position: absolute;
-	top: 30px;
-	z-index: 80;
+	z-index: 110;
     transition: 0.1s;
 	transform-origin: 100% 100%;
 }
 
 .map-marker.open{
-	transform: scale(1.2);
     transition: 0.1s;
 }
 
