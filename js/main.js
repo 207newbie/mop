@@ -48,17 +48,33 @@ $(document).ready(function(){
 		autoScrolling: true,
 		touchSensitivity: 10,
 		normalScrollElements: '#map-container, #map-zoombar',
+		slidesNavigation: true,
+		slidesNavPosition: 'bottom',
 		onLeave: function(index, nextIndex, direction){
 			let title = $('.container .section:nth-child('+nextIndex+')').data('title');
 			$('#title-header').html(title);
 			if (nextIndex >= 5){
 				$('#map-footer').removeClass('hidden');
+				$('.fp-slidesNav').hide();
 			}
 			else{
 				$('#map-footer').removeClass('open maximized');
 				$('.btn-open-map-footer').removeClass('open');
 				$('#map-footer').addClass('hidden');
+				$('.fp-slidesNav').show();
 			}
+		},
+		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+			/* en slide de mapa */
+			if (index == 5 && nextSlideIndex != 0){
+				$('#map-footer').removeClass('open maximized');
+				$('.btn-open-map-footer').removeClass('open');
+				$('#map-footer').addClass('hidden');
+			}
+			if (index == 5 && nextSlideIndex == 0){
+				$('#map-footer').removeClass('hidden');
+			}
+
 		}
 	});
 
@@ -137,10 +153,12 @@ $(document).ready(function(){
 	$('#button-footer').click(function(){
 		$.fn.fullpage.moveSectionDown();
 	});
-	$('.btn-up').click(function(){
-		$.fn.fullpage.moveSectionUp();
+	$('.btn-legend').click(function(){
+		$.fn.fullpage.moveTo(5, 1);
 	});
 	$('.svg-map').on('click', '.map-marker', onMarkerClick);
+
+	$('.menu-item').click(closeNav);
 });
 
 function closeMarker(){
@@ -217,30 +235,45 @@ function closeFooter(e){
 
 /* Open when someone clicks on the span element */
 function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-}
-
-function openDownloadOverlay() {
-    $("#overlay-download").css({
-    	'width': "100%"
-    });
-}
-
-function openLegendOverlay() {
-    $("#overlay-legend").css({
-    	'left': "0%"
-    });
-}
-
-function closeLegendOverlay() {
-    $("#overlay-legend").css({
-    	'left': "-100%"
+    $("#overlay-menu").css({
+    	'top': "0%"
     });
 }
 
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
-    $('.overlay').css({
-    	'width': "0%"
+    $("#overlay-menu").css({
+    	'top': "-100%"
     });
 } 
+
+function openDownloadOverlay() {
+    $("#overlay-download").css({
+    	'top': "0px"
+    });
+}
+
+function closeDownloadOverlay() {
+    $("#overlay-download").css({
+    	'top': "-100%"
+    });
+}
+
+function openShareOverlay() {
+    $("#overlay-share").css({
+    	'top': "0px"
+    });
+}
+
+function closeShareOverlay() {
+    $("#overlay-share").css({
+    	'top': "-100%"
+    });
+}
+
+
+
+
+function moveLeft(){
+	$.fn.fullpage.moveSlideLeft();
+}

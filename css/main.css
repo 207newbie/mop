@@ -71,10 +71,49 @@ body{
 
 }
 
+/* Overwriting styles for the navigation dots (to place it where we want)
+* --------------------------------------- */
+.fp-slidesNav.bottom{
+	bottom: 135px;
+}
+
+.fp-slidesNav ul{
+	text-align: center;
+}
+
+.fp-slidesNav ul li{
+	width: 10px;
+	height: 10px;
+	margin-right: 10px;
+}
+
+.fp-slidesNav ul li a span{
+ 	margin: 0px;
+ 	width:  10px;
+ 	height: 10px;
+ 	margin: 0px;
+ 	background: #bebdbf;
+ 	left: unset;
+ }
+
+.fp-slidesNav ul li a.active span{
+ 	background: #68676b;
+ 	margin: 0px;
+ 	width:  10px;
+ 	height: 10px;
+ 	left: unset;
+
+ }
+
+ .fp-slidesNav ul li:hover a span{
+    margin: 0px;
+ 	width:  10px;
+ 	height: 10px;
+}
+
 .infografia{
 	height: 40vh;
 }
-
 
 h1, h2, h3, h4, h5, h6{
 	-webkit-margin-before: 0px;
@@ -186,7 +225,7 @@ h5{
 .overlay {
     /* Height & width depends on how you want to reveal the overlay (see JS below) */   
     height: 100%;
-    width: 0;
+    width: 100%;
     position: fixed; /* Stay in place */
     z-index: 2; /* Sit on top */
     left: 0;
@@ -210,7 +249,6 @@ h5{
 .overlay a {
     padding-bottom: 30px;
     text-decoration: none;
-    font-size: 18px;
     color: #232929;
     display: block; /* Display block instead of inline */
     transition: 0.1s; /* Transition effects on hover (color) */
@@ -219,13 +257,14 @@ h5{
 .overlay-content .menu-icon{
 	width: 30px;
 }
+
 .overlay-content div {
     padding-bottom: 15px;
 }
 
 /* When you mouse over the navigation links, change their color */
-.overlay a:hover, .overlay a:focus {
-    font-size: 20px;
+.menu-item{
+    font-size: 18px;
     transition: all 0.1s;
 }
 
@@ -388,7 +427,6 @@ h5{
 .map-toolbar{
 	width: 30px;
 	margin-top: 15px;
-	right: 0px;
 }
 .map-toolbar>img{
 	padding-bottom: 30px;
@@ -402,6 +440,7 @@ h5{
  	margin: 0px;
  	padding: 0px;
  	z-index: 8;
+ 	margin-left: 15px;
 }
 
 .map-zoombar img{
@@ -410,7 +449,6 @@ h5{
 }
 
 .map-zoombar .slider-wrapper{
-	margin-left: 15px;
 	width: 30px;
 }
 
@@ -456,41 +494,33 @@ h5{
 	padding-left: 30px;
 }
 
-#overlay-legend{
-	width: 100%;
-	left: -100%;
-	overflow: hidden;
+.legend>div{
+	height: 20px;
+	font-size: 14px;
+	margin-top: 15px;
+}
+.legend>div>span>img{
+	height: 20px;
 }
 
-#overlay-legend .overlay-content{
-	font-size: 12px;
-	text-align: left;
-	height: 100%;
-}
-#overlay-legend hr{
-	margin-bottom: 45px;
-}
-
-#overlay-legend .legend img{
-	height: 16px;
-}
-
-.legend-close-button{
+.btn-legend-return{
 	position: absolute;
-	text-align: center;
-	width: 100%;
 	bottom: 120px;
+	width: 50%;
 }
-.legend-close-button img{
+.btn-legend-return img{
 	transform-origin: 50% 50%;
-	padding: 0px;
-	height: 30px;
 	transform: scaleX(-1);
+	height: 40px;
+	margin-left: calc(50% - 30px);
 }
 
-.legend{
-	margin-left: 30px;
+#overlay-menu{
+	width : 100%;
+	height: 100%;
+	top   : -100%;
 }
+
 
 #overlay-download{
 	width : 100%;
@@ -498,10 +528,58 @@ h5{
 	top   : -100%;
 }
 
+#overlay-share{
+	width : 100%;
+	height: 100%;
+	top   : -100%;
+}
+
+#overlay-download .overlay-download-content{
+	 position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  -webkit-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+}
+
+
+#overlay-download .buttons{
+		
+}
+
+#overlay-download .title{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold; 
+	color: #68676b;
+
+}
+
 #overlay-download img{
 	padding: 30px;
 }
 
+
+#overlay-share .overlay-share-content{
+	width: 100%;
+	height: 100%;
+}
+
+#overlay-share .overlay-share-content .btn-group-share{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#overlay-share .overlay-share-content .btn-close{
+	position: absolute;
+	left: 50%;
+	bottom: 60px;
+	-webkit-transform: translate(-50%, 0px);
+	transform: translate(-50%, 0px);
+}
 
 *::-webkit-scrollbar {
     width: 0px;

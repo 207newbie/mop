@@ -12,22 +12,22 @@
 	</head>
 	<body>
 		<!-- Nav bar -->
-		<div id="myNav" class="overlay">
+		<div id="overlay-menu" class="overlay">
 			<!-- Overlay content -->
 			<div class="overlay-content">
-				<a href="#home">
+				<a class="menu-item" href="#home">
 					<div><img class="menu-icon" src="images/que_es_regular.svg" alt=""></div>
 					<div><strong>¿Qúe es?</strong></div>
 				</a>
-				<a href="#mapas">
+				<a class="menu-item" href="#mapas">
 					<div><img class="menu-icon" src="images/mapa_regular.svg" alt=""></div>
 					<div><strong>Mapas</strong></div>
 				</a>
-				<a href="#">
+				<a class="menu-item" href="#">
 					<div><img class="menu-icon" src="images/participa_regular.svg" alt=""></div>
 					<div><strong>Participa</strong></div>
 				</a>
-				<a href="#">
+				<a class="menu-item" href="#">
 					<div><img class="menu-icon" src="images/download_regular.svg" alt=""></div>
 					<div><strong>Descargas</strong></div>
 				</a>
@@ -38,62 +38,30 @@
 
 		<div id="overlay-download" class="overlay">
 			<!-- Overlay content -->
-			<div class="overlay-content">
-				<div>Descargar el mapa de las iniciativas estratégicas</div>
-				<div>
+			<div class="overlay-download-content">
+				<div class="title">¿Desea descargar el mapa de las iniciativas estrategicas?</div>
+				<div class="buttons">
 					<img src="images/info.png" alt="">
-					<img src="images/close.png" alt="" onclick="closeNav()">
+					<img src="images/close.png" alt="" onclick="closeDownloadOverlay()">
 				</div>
 			</div>
 		</div>
 
-		<div id="overlay-legend" class="overlay">
+		<div id="overlay-share" class="overlay">
 			<!-- Overlay content -->
-			<div class="overlay-content">
-				<div class="legend">
-				 	<h2>Simbología</h2>
-				 	<hr align="left">
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Cuidado y uso eficiente a los recursos hidricos</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Integración social y territorial</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Calidad de vida</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Competitividad y desarrollo económico</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Conversatorio grupo de especialistas</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Talleres regionales</span>
-				  </div>
-				  <div>
-					  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
-					  <span class="legend-text">Consultas</span>
-				  </div>
-				</div> 
-				<div class="legend-close-button">
-					<img src="images/arrow_right_regular.svg" alt="" onclick="closeLegendOverlay()">
+			<div class="overlay-share-content">
+				<div class="btn-group-share">
+					<div class="line">Twittear esto</div>
+					<div class="line">Compartir en Facebook</div>
+					<div class="line">https://goo.gl/uNMPHG</div>
+				</div>
+				<div class="btn-close">
+					<img src="images/close.png" alt="" onclick="closeShareOverlay()">
 				</div>
 			</div>
 		</div>
-		
-		<div class="container">
-			
-			<div id="button-header" class="header">
-				<img class="btn-up" src="images/angle_down_regular.svg" alt="">
-			</div>
 
+		<div class="container">
 			<div class="header" id="main-header">
 				<h3 >
 					<span id="title-header">
@@ -117,19 +85,9 @@
 					</p>
 				</div>
 				<div class="slide">
-					<h2>Obras del Díalogo</h2>
+					<h2>Proceso metodológico</h2>
 					<hr align="left">
-					<p>Planificación y mirada del territorio de manera integral 
-					</p>
 					<img src="" alt="Infografia" class="infografia">
-					<p>
-						<div>
-						<strong>30/30</strong>: Plan Chile 30/30
-						</div>
-						<div>
-						<strong>30 MIL</strong>: 30 mil ideas para Chile
-						</div>
-					</p>
 				</div>
 			</div>
 
@@ -185,7 +143,6 @@
 				<div class="slide">
 					<h2>Instituciones Participantes</h2>
 					<hr align="left">
-					
 				</div>
 				<div class="slide">
 					<h2>Instituciones Participantes</h2>
@@ -219,57 +176,96 @@
 
 
 			<div class="section" data-title="Mapa de diálogo territorial" data-anchor="mapas-dialogo-territorial">
-				<!--ZOOM-->
-				<div class="map-section map-zoombar">
-					<div>
-						<img src="images/zoom_regular.svg" alt="">
+				<div class="slide">
+					<!--ZOOM-->
+					<div class="map-section map-zoombar">
+						<div>
+							<img src="images/zoom_regular.svg" alt="">
+						</div>
+						<div class="slider-wrapper">
+							<input data-target="map-dialogo-territorial" type="range" id="zoom-slider" min="0" max="100" value="100" step="10">
+						</div>
 					</div>
-					<div class="slider-wrapper">
-						<input data-target="map-dialogo-territorial" type="range" id="zoom-slider" min="0" max="100" value="100" step="10">
+					<!--MAP-->
+					<div class="map-section map-container">
+						<svg id="map-dialogo-territorial" class="svg-map" version="1.1" viewBox="0 0 1420 8266"
+						     xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+							<image class="img-map" xlink:href="images/mapa.png" x="0" y="0" height="100%" width="100%"/>
+						</svg>
+					</div>
+					<!--BUTTONS-->
+					<div class="map-section map-toolbar">
+						<img src="images/info_regular.svg" class="btn-legend" >
+						<img src="images/plus_regular.svg" alt="">
+						<img src="images/download_regular.svg" alt="" onclick="openDownloadOverlay()">
+						<img src="images/compartir_regular.svg" alt="" onclick="openShareOverlay()">
+					</div>
+					<!-- FOOTERS -->
+					<div id="map-footer" class="hidden footer">
+						<div class="colored-bar" id="detail-bar">
+						</div>
+						<div class="footer-content">
+							<div class="line">
+								<h6 id="detail-zone">Macro zona norte</h6>
+							</div>
+							<div class="line">
+								<h2 id="detail-region">Arica y parinacota</h2>
+								<img class="btn-open-map-footer" src="images/angle_down_regular.svg" alt="">
+							</div>
+							<div class="footer-body">
+								<p class="p-small" id="detail-text">
+								</p>
+								<p id="detail-author"></p>
+							</div>
+							<div class="footer-footer">
+								<img class="btn-maximize" src="images/plus.png" alt="">
+							</div>
+						</div>
 					</div>
 				</div>
-				<!--MAP-->
-				<div class="map-section map-container">
-					<svg id="map-dialogo-territorial" class="svg-map" version="1.1" viewBox="0 0 1420 8266"
-					     xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
-						<image class="img-map" xlink:href="images/mapa.png" x="0" y="0" height="100%" width="100%"/>
-					</svg>
-				</div>
-				<!--BUTTONS-->
-				<div class="map-section map-toolbar">
-					<img src="images/info_regular.svg" alt="" onclick="openLegendOverlay()">
-					<img src="images/plus_regular.svg" alt="">
-					<img src="images/download_regular.svg" alt="" onclick="openDownloadOverlay()">
-					<img src="images/compartir_regular.svg" alt="">
+				<div class="slide">
+					<div class="legend">
+					 	<h2>Simbología</h2>
+					 	<hr align="left">
+						<div>
+						<span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						  	<span class="legend-text">
+						  		Cuidado y uso eficiente a los recursos hidricos
+							</span>	
+						</div>
+						<div>
+							<span class="legend-icon"><img src="images/comment.png" alt=""></span>
+							<span class="legend-text">Integración social y territorial</span>
+						</div>
+						<div>
+							<span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						 	<span class="legend-text">Calidad de vida</span>
+						</div>
+						<div>
+						  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						  <span class="legend-text">Competitividad y desarrollo económico</span>
+						</div>
+						<div>
+						  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						  <span class="legend-text">Conversatorio grupo de especialistas</span>
+						</div>
+						<div>
+						  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						  <span class="legend-text">Talleres regionales</span>
+						</div>
+						<div>
+						  <span class="legend-icon"><img src="images/comment.png" alt=""></span>
+						  <span class="legend-text">Consultas</span>
+						</div>
+					</div> 
+					<div class="btn-legend-return">
+						<img src="images/arrow_right_regular.svg" alt="" onclick="moveLeft()">
+					</div>
 				</div>
 			</div>
 			
 			
-			<!-- FOOTERS -->
-			<div id="button-footer" class="footer">
-				<img class="btn-down" src="images/angle_down_regular.svg" alt="">
-			</div>
-			<div id="map-footer" class="hidden footer">
-				<div class="colored-bar" id="detail-bar">
-				</div>
-				<div class="footer-content">
-					<div class="line">
-						<h6 id="detail-zone">Macro zona norte</h6>
-					</div>
-					<div class="line">
-						<h2 id="detail-region">Arica y parinacota</h2>
-						<img class="btn-open-map-footer" src="images/angle_down_regular.svg" alt="">
-					</div>
-					<div class="footer-body">
-						<p class="p-small" id="detail-text">
-						</p>
-						<p id="detail-author"></p>
-					</div>
-					<div class="footer-footer">
-						<img class="btn-maximize" src="images/plus.png" alt="">
-					</div>
-				</div>
-			</div>
+			
 		</div>
 
 
