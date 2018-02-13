@@ -36,7 +36,7 @@ body{
 	margin-right: 0px;
 }
 
-.header{
+#main-header{
 		position:fixed;
 		top     : 0px ;
 		height  : 90px;
@@ -47,9 +47,16 @@ body{
 		padding: 0px 0px 0px 0px;
 		margin-left  : 60px;
 		margin-right : 60px;
+		left:  0px;
+		transition: 0.7s;
 }
 
-.header .header-content{
+#main-header.hidden{
+	left:  100%;
+	transition: 0.7s;
+}
+
+#main-header .header-content{
 	float        : right;
 	margin-top   : 30px;
 	margin-bottom: 30px;
@@ -57,7 +64,7 @@ body{
 	font-size    : 16px; 
 }
 
-.header .header-content a{
+#main-header .header-content a{
 	margin-left: 30px;
 	color        : #282e33; 
 }
@@ -75,9 +82,19 @@ h1.huge{
 	width: 100%;		
 }
 
+.side-header.maps-open{
+	margin-top: 120px;	
+}
+
+
+.side-header.downloads-open{
+	margin-top: 90px;	
+}
+
 .side-header .header-content a.item{
 	margin-bottom: 30px;
-	font-size: 21px;
+	font-size: 16px;
+	line-height: 17px;
 	font-weight: normal;
 	color: #282e33;
 	display: block;
@@ -93,12 +110,11 @@ h1.huge{
 	font-weight: bold;
 }
 
-
 .side-header .header-content a.sub-item{
 	display: block;
 	font-size: 14px;
 	line-height: 14px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	margin-left: 15px;
 	color: #282e33;
 	text-decoration: none;
@@ -156,12 +172,14 @@ h1.huge{
 
 .col-map>a{
 	text-decoration: none;
+	display: block;
+	text-align: center; 
 }
 
 .col-map>a>img{
 	margin-top: 30px;
-	margin-bottom: 30px;
 }
+
 .col-map>a>p{
 	margin-top   : 0px;
 	margin-bottom: 0px;
@@ -210,7 +228,7 @@ p.big{
 }
 
 
-.btn-close-overlay{
+.btn-close-overlay, .btn-close-map{
 	position: absolute;
 	transform-origin: 50% 50%;
 	right: 30px;
@@ -250,6 +268,7 @@ p.big{
 
  /* The Overlay (background) */
 .overlay {
+	overflow-y: hidden;
     /* Height & width depends on how you want to reveal the overlay (see JS below) */   
     height: 100%;
     width: 100%;
@@ -272,6 +291,11 @@ p.big{
     margin-left: 30px; 
 }
 
+.overlay-content img{
+	width: 100%;
+	height: 100%;
+}
+
 
 h1, h2, h3, h4, h5, h6{
 	margin: 0px 0px 0px 0px;
@@ -279,4 +303,344 @@ h1, h2, h3, h4, h5, h6{
     -webkit-margin-after: 0px;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
+}
+
+.map-details{
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 48.61%;
+	flex: 0 0 48.61%;
+	max-width: 48.61%;
+	opacity: 1.0;
+	transition: 0.5s;
+	position: absolute;
+	display: inline-block;
+}
+
+.map-preview{
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 51%;
+	flex: 0 0 51%;
+	max-width: 51%;
+	opacity: 1.0;
+	transition: 0.5s;
+	position: absolute;
+	display: inline-block;
+	right: 0px;
+	height: 100%;
+	overflow-y: hidden;
+}
+
+.map-preview img{
+	width: 100%;
+}
+
+.btn-open-map{
+	cursor: pointer;
+}
+
+.map-wrapper{
+	width: 80vw;
+	height: 100%;
+}
+
+.svg-map{
+	opacity: 0.0;
+	width: 100%;
+	-webkit-box-flex: 0;
+	height: 100%;
+}
+
+.svg-map rect{
+	cursor: grab;
+}
+
+.svg-map.loaded{
+	opacity: 1.0;
+	transition: 0.5s;
+}
+
+.complementary-info{
+	width: 100%;
+	left: 0px;
+	margin-top: 120px;
+	position: absolute;
+	transition: 0.7s;
+}
+
+
+.overlay .zoom-bar{
+	height: 50%;
+	width : 30px;
+	top   : 135px;
+	left  : 30px;
+}
+
+.legend-info{
+	width: 20vw;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin-right: 60px;
+	margin-top: 135px;
+}
+
+.legend-info .filter-item{
+	font-size: 14px;
+}
+
+.legend-info div .legend-icon{
+	margin-right: 10px;
+}
+
+.legend-info .btn-action img, .legend-info .btn-action span{
+	display: inline-block;
+}
+.legend-info .btn-action{
+	vertical-align: middle;
+	color: #282e33;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.legend-set .legend-item{
+	vertical-align: middle;
+	color: #282e33;
+	font-size: 13px;
+	margin-bottom: 10px;
+}
+
+.legend-set .legend-item img, .legend-set .legend-item span{
+	display: inline-block;
+}
+
+.legend-set .legend-item img{
+	margin-right: 10px;
+}
+
+.zoom-bar{
+	position: absolute;
+}
+
+.zoom-bar .circulo{
+	cursor: pointer;
+	z-index: 10;
+}
+
+.switch {
+  display: inline-block;
+  height: 12px;
+  position: relative;
+  width: 30px;
+}
+
+.switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #fff;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border: 1px solid #908e92;
+}
+
+.slider:before {
+  background-color: #282e33;
+  bottom: 1px;
+  content: "";
+  height: 8px;
+  width: 8px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+}
+
+
+
+input:checked + .slider {
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+}
+
+.slider.round {
+  border-radius: 5px;
+}
+
+.slider.round:before {
+  border-radius: 100%;
+}
+
+.circle {
+  margin-left : 5px;
+  margin-right: 5px;
+  height: 10px;
+  width : 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.triangle {
+  height: 0;
+  width : 0;
+  margin-left : 5px;
+  margin-right: 5px;
+  border-width: 0 8px 12px 8px;
+  display: inline-block;
+  border-style: solid;
+}
+
+.triangle.orange-1{
+  background-color: transparent;
+  border-color: transparent transparent #ef5a36 transparent;
+}
+
+.triangle.black-1{
+  background-color: transparent;
+  border-color: transparent transparent #282e33 transparent;
+}
+
+.triangle.red-1{
+  background-color: transparent;
+  border-color: transparent transparent #df2622 transparent;
+}
+
+.box{
+	display: inline-block;
+  	margin-left : 5px;
+  	margin-right: 5px;
+	width : 10px;
+	height: 10px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.brown-1{
+  background-color: #931914;
+}
+.red-1{
+  background-color: #df2622;
+}
+.orange-1{
+  background-color: #face00;
+}
+.yellow-1{
+  background-color: #fbe700;
+}
+.blue-1{
+  background-color: #0078b7;
+}
+.pink-1{
+  background-color: #d35073;
+}
+.green-1{
+  background-color: #73c164;
+}
+.violet-1{
+  background-color: #5f3a71;
+}
+
+#overlay-detalle-conectividad{
+	position         : fixed;
+	transform-origin : 50% 50%;
+	top   : 50%;
+	left  : 50%;
+	width : 200px;
+	background-color: #bebdbf;
+	border-radius: 5px;
+	z-index      : 300;
+	padding: 15px;
+	opacity: 1.0;
+	transition-duration: 0.5s;
+}
+
+#overlay-detalle-conectividad.hidden{
+	opacity: 0.0;
+	transition-duration: 0.5s;
+}
+
+#overlay-detalle-conectividad small{
+	font-size: 11px;
+}
+
+#overlay-detalle-conectividad h4{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#overlay-detalle-conectividad li{
+	font-size: 11px;
+}
+
+#overlay-detalle-conectividad .btn-close{
+	float: right;
+}
+
+#mapa-conectividad .svg-map circle{
+	cursor: pointer;
+}
+
+
+
+#main-spinner{
+	width: 100vw;
+	height: 100vh;
+	display: block;
+}
+
+#main-spinner .spinner{
+	left: calc(50vw - 20px);
+}
+
+
+.spinner {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	margin: 0px;
+	top: calc(50% - 20px);
+	left: calc(40vw - 20px);
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
 }

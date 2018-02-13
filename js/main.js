@@ -22,6 +22,18 @@ var MAPDATA = [
 		src     : 'images/marker-008c74.png',
 		srcMinus: 'images/marker-008c74-minus.png',
 		color   : '#008c74'
+	},
+	{
+		barTitle: "Calidad de vida",
+		zone    : "Macro zona norte",
+		region  : "Arica y parinacota",
+		text   : "Lorem.",
+		author  : "Yolanda del Pilar Carrasco", 
+		x       : 900,
+		y       : 1200,
+		src     : 'images/marker-008c74.png',
+		srcMinus: 'images/marker-008c74-minus.png',
+		color   : '#008c74'
 	}
 ];
 
@@ -31,6 +43,7 @@ function animate( time ) {
 	TWEEN.update( time );
 }
 
+const MAX_TEXT_DETAIL_SIZE = 200;
 
 $(document).ready(function(){	
 	loadData();
@@ -74,7 +87,6 @@ $(document).ready(function(){
 			if (index == 5 && nextSlideIndex == 0){
 				$('#map-footer').removeClass('hidden');
 			}
-
 		}
 	});
 
@@ -181,19 +193,24 @@ function onMarkerClick(e){
 	$('#detail-bar').html(MAPDATA[index].barTitle);
 	$('#detail-zone').html(MAPDATA[index].zone);
 	$('#detail-region').html(MAPDATA[index].region);
-	$('#detail-text').html(MAPDATA[index].text);
+	$('#detail-author').html(MAPDATA[index].author);
+	/* solo se muestran hasta MAX_TEXT_DETAIL_SIZE letras*/
+	if (MAPDATA[index].text.length > MAX_TEXT_DETAIL_SIZE){
+		$('#detail-text').html('<span>'+MAPDATA[index].text.substr(0, MAX_TEXT_DETAIL_SIZE)+'...</span>');
+		let span = $('<span></span>');
+		span.hide();
+		span.html(MAPDATA[index].text.substr(MAX_TEXT_DETAIL_SIZE));
+		$('#detail-text').append(span);
+		$('#detail-author').hide();
+		$('.footer-footer').show();	
+	}
+	else{
+		$('#detail-text').html(MAPDATA[index].text);
+		$('#detail-author').show();	
+		$('.footer-footer').hide();	
+	}
 	$('#detail-bar').css('background-color', MAPDATA[index].color);
 	updateMapDetailHeight();	
-}
-
-function updateMapDetailHeight(){
-	/*
-	let height = parseInt($('#detail-bar').css('height').replace('px', ''));
-	height    += parseInt($('#map-footer .footer-header').css('height').replace('px', ''));
-	$('#map-footer').css({
-		height: height
-	});
-	*/
 }
 
 function loadData(){
@@ -213,8 +230,16 @@ function loadData(){
 }
 
 function maximizeMapDetail(e){
+	if ($('#map-footer').hasClass('maximized')){
+		$('#detail-text span:nth-child(2)').hide();	
+		$('#detail-author').hide();
+	}
+	else{
+		$('#detail-author').show();	
+		$('#detail-text span').show();
+	}
 	$('#map-footer').toggleClass('maximized');		
-	$(this).toggleClass('maximized');	
+	$(this).toggleClass('maximized');
 }
 
 function toggleMapDetail(e){
@@ -223,7 +248,7 @@ function toggleMapDetail(e){
 	})
 	if ($(this).hasClass('open')){
 		$('#map-footer').removeClass('maximized');
-		updateMapDetailHeight();		
+		$('#detail-text span:nth-child(2)').hide();	
 	}
 	$(this).toggleClass('open');		
 	$('#map-footer').toggleClass('open');		

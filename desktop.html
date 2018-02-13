@@ -10,8 +10,200 @@
 		<link rel="stylesheet" href="vendor/fullpage/jquery.fullpage.min.css">
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="css/desktop.css">
+		<link rel="stylesheet" href="vendor/svg.select.min.css">
 	</head>
 	<body>
+
+		<div id="overlay-mapa-vulnerabilidades" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-map" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="map-wrapper">
+				<div class="svg-map" id="svg-mapa-vulnerabilidades"></div>
+				<div id="svg-zoom-mapa-vulnerabilidades" class="zoom-bar"></div>
+			</div>
+			<div class="legend-info">
+				<h3>Simbología</h3>
+				<div>
+					<ul class="filter-set">
+						<li class="filter-item">
+							<strong>Riesgo sísmico</strong>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-sismos-cafe">
+						    	<input type="checkbox" id="checkbox-sismos-cafe" checked data-target="sismos_cafe">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="circle brown-1"></span>
+							<span>Muy alto</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-sismos-rojos">
+						    	<input type="checkbox" id="checkbox-sismos-rojos" checked data-target="sismos_rojos">
+						    	<div class="slider round"></div>
+						  	</label>
+						  	<span class="circle red-1"></span>
+						  	<span>Alto</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-sismos-naranja">
+						    	<input type="checkbox" id="checkbox-sismos-naranja" checked data-target="sismos_naranja">
+						    	<div class="slider round"></div>
+						  	</label>
+						  	<span class="circle orange-1"></span>
+						  	<span>Peligrosidad en aumento</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-sismos-amarillo">
+						    	<input type="checkbox" id="checkbox-sismos-amarillo" checked data-target="sismos_amarillo">
+						    	<div class="slider round"></div>
+						  	</label>
+						  	<span class="circle yellow-1"></span>Peligrosidad moderada
+						</li>
+					</ul>
+					<ul class="filter-set">
+						<li class="filter-item">
+							<strong>Volcanes</strong>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-volcan-negro">
+						    	<input type="checkbox" id="checkbox-volcan-negro" checked data-target="volcan_negro">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="triangle black-1"></span>
+							<span>Moderada</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-volcan-naranja">
+						    	<input type="checkbox" id="checkbox-volcan-naranja" checked data-target="volcan_naranja">
+						    	<div class="slider round"></div>
+						  	</label>
+						  	<span class="triangle orange-1"></span>
+							<span>Alta</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-volcan-rojo">
+						    	<input type="checkbox" id="checkbox-volcan-rojo" checked data-target="volcan_rojo">
+						    	<div class="slider round"></div>
+						  	</label>
+						  	<span class="triangle red-1"></span>
+							<span>Muy alta</span>
+						</li>
+					</ul>
+					<ul class="filter-set">
+						<li class="filter-item">
+							<strong>Índice de vulnerabilidad social</strong>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-box-blue">
+						    	<input type="checkbox" id="checkbox-box-blue" checked data-target="cuadro_celeste">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="box blue-1"></span>
+							<span>< 10.000</span>
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-box-green">
+						    	<input type="checkbox" id="checkbox-box-green" checked data-target="cuadro_verde">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="box green-1"></span>10.000 - 15.000
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-box-naranja">
+						    	<input type="checkbox" id="checkbox-box-naranja" checked data-target="cuadro_naranja">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="box orange-1"></span>15.000 - 25.000
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-box-rosado">
+						    	<input type="checkbox" id="checkbox-box-rosado" checked data-target="cuadro_rosado">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="box pink-1"></span>25.000 - 35.000
+						</li>
+						<li class="filter-item">
+							<label class="switch" for="checkbox-box-morado">
+						    	<input type="checkbox" id="checkbox-box-morado" checked data-target="cuadro_morado">
+						    	<div class="slider round"></div>
+						  	</label>
+							<span class="box violet-1"></span>> 35.000
+						</li>
+					</ul>
+					<div class="btn-action">
+						<img src="images/download_bold.svg" alt="">
+						<span>Descargar mapa</span>
+					</div>
+					<div class="btn-action">
+						<img src="images/plus_bold.svg" alt="">
+						<span>Compartir este mapa</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="overlay-detalle-conectividad" class="hidden">
+			<div class="header">
+				<div>
+					<span></span>
+					<img src="images/cross_regular.svg" class="btn-close" alt="">
+				</div>
+				<div>
+					<small>Macro zona sur</small>
+					<h4>Gran Concepción</h4>
+				</div>
+			</div>
+			<div class="body">
+				<ul>
+					<li>Conexión 1</li>
+					<li>Conexión 2</li>
+					<li>Conexión 3</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="overlay-desafios-ambitos-investigacion" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Instituciones participantes</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/desafios/1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-lineas-investigacion" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Lineas de investigación</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/desafios/2.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div id="overlay-instituciones-participantes" class="overlay">
 			<!-- Overlay content -->
@@ -23,10 +215,12 @@
 					<div class="col-3">
 						<h2>Instituciones participantes</h2>
 						<div class="line"><hr></div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rerum ipsam omnis facilis recusandae provident, totam quae, voluptas quo excepturi itaque inventore! Assumenda exercitationem odio asperiores maiores, libero eaque perferendis.</p>
+						<p>Una de las ideas principales para el proceso de participativo es que éste fuera ampliamente representativo. El camino escogido para ello fue llegar a los diversos sectores que conforman nuestra sociedad civil. Para ello hemos establecido que la gobernaza del Plan se dividiria en 6 principales grupos: Sector Privado, Sector Público, Organismos No Gubernametales, Sociedad Civil Organizada, Academia y Organizaciones Público-Privadas.</p>
 					</div>
 					<div class="col-2"></div>
-					<div class="col-6"></div>
+					<div class="col-6">
+						<img src="images/infografias/dialogos/6.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,10 +235,12 @@
 					<div class="col-3">
 						<h2>Participaciones por actividad</h2>
 						<div class="line"><hr></div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rerum ipsam omnis facilis recusandae provident, totam quae, voluptas quo excepturi itaque inventore! Assumenda exercitationem odio asperiores maiores, libero eaque perferendis.</p>
+						<p>Debido a la complejidad de nuestro panorama socio-cultural se requirió asegurar que la participación fuera representativa, para lo cual se definieron una serie de formatos. Destaca la participación en talleres, ya que en éstos es donde se logran los acuerdos por medio del diálogo. A la vez destacamos la posibilidad de participar virtualmente para todos aquellos que por diferentes razones no podían participar presencialmente.</p>
 					</div>
 					<div class="col-2"></div>
-					<div class="col-6"></div>
+					<div class="col-6">
+						<img src="images/infografias/dialogos/7.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -59,10 +255,12 @@
 					<div class="col-3">
 						<h2>Participaciones por macrozona y genéro</h2>
 						<div class="line"><hr></div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rerum ipsam omnis facilis recusandae provident, totam quae, voluptas quo excepturi itaque inventore! Assumenda exercitationem odio asperiores maiores, libero eaque perferendis.</p>
+						<p>La participación ciudadana en el ámbito territorial tiene correlación con el porcentaje de habitantes en dichas regiones, mostrando mayores niveles de participación en la zona centro en comparación con la zona austral, que es la zona con menos densidad a nivel nacional.</p>
 					</div>
 					<div class="col-2"></div>
-					<div class="col-6"></div>
+					<div class="col-6">
+						<img src="images/infografias/dialogos/2.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -77,10 +275,12 @@
 					<div class="col-3">
 						<h2>Participación de pueblos indigenas</h2>
 						<div class="line"><hr></div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rerum ipsam omnis facilis recusandae provident, totam quae, voluptas quo excepturi itaque inventore! Assumenda exercitationem odio asperiores maiores, libero eaque perferendis.</p>
+						<p>Es relevante recoger la mirada territorial y cultural de los pueblos indígenas a lo largo del país, por lo que se dio especial importancia a su identificación en el levantamiento de actores en cada una de las regiones y su integración a las diversas actividades regionales. Por otra parte, durante el 2017 se realizó una presentación del Plan ante la Corporación Nacional de Desarrollo Indígena (CONADI) y la Comisión de Desarrollo de Isla de Pascua (CODEIPA), con el fin de invitarlos a participar activamente en las actividades a nivel regional.</p>
 					</div>
 					<div class="col-2"></div>
-					<div class="col-6"></div>
+					<div class="col-6">
+						<img src="images/infografias/dialogos/3.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -95,21 +295,251 @@
 					<div class="col-3">
 						<h2>Proceso metodológico plan 30/30</h2>
 						<div class="line"><hr></div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rerum ipsam omnis facilis recusandae provident, totam quae, voluptas quo excepturi itaque inventore! Assumenda exercitationem odio asperiores maiores, libero eaque perferendis.</p>
+						<p>El proceso metodológico establece que el Plan debe tener la debida capacidad de retroalimentación desde y hacia los territorios, para poder realizar los ajustes necesarios para su implementación. El proceso participativo debe ser de carácter iterativo en un trabajo conjunto con los mismo territorios, a fin de realizar los ajustes que sean necesarios para el mejor logro de sus resultados.</p>
 					</div>
 					<div class="col-2"></div>
-					<div class="col-6"></div>
+					<div class="col-6">
+						<img src="images/infografias/dialogos/4.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
 
+		<div id="overlay-infraestructura-vidas" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Infraestructura que salva vidas</h2>
+						<div class="line"><hr></div>
+						<p>Identificar zonas riesgo e intervenirlas con infraestructura, permite eliminar o disminuir el desastre de manera de evitar la pérdida de vidas, aumentar los tiempos de evacuación, disminuir la pérdida de infraestructura y mantener la conectividad.</p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/vulnerabilidades/3.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-distribucion-agua" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Distribución de los usos consuntivos de agua a nivel nacional en los principales sectores productivos</h2>
+						<div class="line"><hr></div>
+						<p>Identificar zonas riesgo e intervenirlas con infraestructura, permite eliminar o disminuir el desastre de manera de evitar la pérdida de vidas, aumentar los tiempos de evacuación, disminuir la pérdida de infraestructura y mantener la conectividad.</p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/vulnerabilidades/2.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-zoom-vulnerabilidad" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Zoom indice de vulnerabilidad social RM</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/vulnerabilidades/1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-niveles-motorizacion" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Niveles de motorización</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/conectividad/1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-viajes-aereos" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Viajes aereos</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/conectividad/2.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-transporte-maritimo" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Transporte marítimo</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/conectividad/3.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-desafios-norte" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Desafíos Macrozona Norte</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/iniciativas/1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-desafios-centro" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Desafíos Macrozona Centro</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/iniciativas/2.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-desafios-sur" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Desafíos Macrozona Sur</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/iniciativas/3.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-desafios-austral" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Desafíos Macrozona Austral</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/iniciativas/4.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="overlay-principios-ocde" class="overlay">
+			<!-- Overlay content -->
+			<a href="javascript:void(0)" class="btn-close-overlay" onclick="">
+				<img src="images/close.png" alt="">
+			</a>
+			<div class="overlay-content">
+				<div class="row">
+					<div class="col-3">
+						<h2>Principios de la OCDE</h2>
+						<div class="line"><hr></div>
+						<p></p>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-6">
+						<img src="images/infografias/ocde/1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+
 		<div class="container-fluid">
+			<div id="main-spinner">
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+			</div>
 			<div class="header" id="main-header">
 				<div class="header-content">
 					<a href="#que-es">¿Qué es?</a>
 					<a href="#mapas">Mapas</a>
-					<a href="">Participa</a>
-					<a href="#descargas">Descargas</a>
+					<a href="#participa">Participa</a>
+					<a href="#descarga-mapa-dialogo-territorial">Descargas</a>
 				</div>
 			</div>
 			<div class="section" data-title="" data-anchor="home">
@@ -130,7 +560,7 @@
 								<a href="" class="sub-item"><p>>> ¿Cómo participaron?</p></a>
 								<a href="#mapas" class="item">Mapas</a>
 								<a href="#participa" class="item">Participa</a>
-								<a href="#descargas" class="item">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
 							</div>
 						</div>
 					</div>
@@ -155,7 +585,7 @@
 								<a href="#que-es" class="item ">¿Qué es?</a>
 								<a href="#mapa-dialogo-territorial" class="item active">Mapas</a>
 								<a href="#participa" class="item">Participa</a>
-								<a href="#descargas" class="item">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
 							</div>
 						</div>
 					</div>
@@ -173,40 +603,40 @@
 							<div class="col-12 full-width">
 								<div class="row">
 									<div class="col-3 col-map">
-										<a href="#"><img src="images/dialogo.svg" alt="">
-										<p>Mapa de iniciativas estratégicas</p>
+										<a href="#mapa-iniciativas" class="text-center" href="#"><img src="images/dialogo.svg" alt="">
+											<p>Mapa de iniciativas estratégicas</p>
 										</a>
 									</div>
 									<div class="col-3 col-map">
-										<a href=""><img src="images/dialogo.svg" alt="">
+										<a href="#mapa-vulnerabilidades"><img src="images/dialogo.svg" alt="">
 										<p>Mapa de las vulnerabilidades y el cambio climático</p>
 										</a>
 									</div>
 									<div class="col-3 col-map">
-										<a href=""><img src="images/dialogo.svg" alt="">
+										<a href="#mapa-conectividad"><img src="images/dialogo.svg" alt="">
 										<p>Mapa de la integración y conectividad</p>
 										</a>
 									</div>
 									<div class="col-3 col-map">
 										<a href="#mapa-dialogo-territorial"><img src="images/dialogo.svg" alt="">
-										<p>Mapa del dialogo territorial</p>
+										<p>Mapa del diálogo territorial</p>
 										</a>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-1-5"></div>
 									<div class="col-3 col-map">
-										<a href=""><img src="images/dialogo.svg" alt="">
+										<a href="#mapa-desafios"><img src="images/dialogo.svg" alt="">
 										<p>Mapa de las visiones y desafios</p>
 										</a>
 									</div>
 									<div class="col-3 col-map">
-										<a href=""><img src="images/dialogo.svg" alt="">
+										<a href="#mapa-obras"><img src="images/dialogo.svg" alt="">
 										<p>Mapa de obras con mirada de futuro</p>
 										</a>
 									</div>
 									<div class="col-3 col-map">
-										<a href=""><img src="images/dialogo.svg" alt="">
+										<a href="#mapa-ocde"><img src="images/dialogo.svg" alt="">
 										<p>Mapa de la mirada OCDE</p>
 										</a>
 									</div>
@@ -222,74 +652,522 @@
 			<div class="section" data-title="" data-anchor="mapa-dialogo-territorial">
 				<div class="row">
 					<div class="col-2 col-side-nav">
-						<div class="side-header">
+						<div class="side-header maps-open">
 							<div class="header-content">
 								<a href="#que-es" class="item">¿Qué es?</a>
 								<a href="#mapas" class="item active">Mapas</a>
-								<a href="" class="sub-item first active"><p>>> Mapa del diálogo territorial</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first active"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
 								<a href="#participa" class="item">Participa</a>
-								<a href="#descargas" class="item">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
 							</div>
 						</div>
 					</div>
-					<div class="col-4 col-info">
-						<h1>¿Qué es el plan Chile 30/30?</h1>
-						<div class="line">
-							<hr>
+					<div class="col-7">
+						<div class="row">
+							<div class="map-details">
+								<h1>Mapa del diálogo territorial</h1>
+								<div class="line">
+									<hr>
+								</div>
+								<p>
+									El Plan Chile 30/30 Obras Públicas y Agua para el Desarrollo, es un instrumento de planificación estratégico de largo plazo, con una visión de desarrollo país, además de visiones territoriales por macrozona y regiones, donde se definen objetivos de largo plazo coherentes y logrables, en el ámbito de infraestructura y agua, y que se reflejan en iniciativas estratégicas consecuentes con dichas visiones.
+								</p>
+							</div>
+							<div class="col-info-map map-wrapper">
+								<!--object type="image/svg+xml" data="images/vulnerabilidades_desk.svg" class="svg-map">
+								</object-->
+								<!--img src="images/mapa.png" alt="" class="svg-map"-->
+							</div>
 						</div>
-						<p>El Plan Chile 30/30 Obras Públicas y Agua para el Desarrollo, es un instrumento de planificación estratégico de largo plazo, con una visión de desarrollo país, además de visiones territoriales por macrozona y regiones, donde se definen objetivos de largo plazo coherentes y logrables, en el ámbito de infraestructura y agua, y que se reflejan en iniciativas estratégicas consecuentes con dichas visiones.</p>
 					</div>
-					<div class="col-2">
-						
-					</div>
-					<div class="col-4">
-						<h2> Información <br>complementaria</h2>
-						<div class="line">
-							<hr>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="instituciones-participantes">
+									<h3>Instituciones participantes</h3>
+								</li>
+								<li class="btn-info" data-target="participaciones-actividad">
+									<h3>Participaciones por actividad</h3>
+								</li>
+								<li class="btn-info" data-target="participaciones-macrozona">
+									<h3>Participaciones por macrozona y genéro</h3>
+								</li>
+								<li class="btn-info" data-target="participacion-pueblos">
+									<h3>Participación de pueblos indigenas</h3>
+								</li>
+								<li class="btn-info" data-target="proceso-metodologico">
+									<h3>Proceso metodológico plan 30/30</h3>
+								</li>
+							</ul>
 						</div>
-						<ul>
-							<li class="btn-info" data-target="instituciones-participantes">
-								<h3>Instituciones participantes</h3>
-							</li>
-							<li class="btn-info" data-target="participaciones-actividad">
-								<h3>Participaciones por actividad</h3>
-							</li>
-							<li class="btn-info" data-target="participaciones-macrozona">
-								<h3>Participaciones por macrozona y genéro</h3>
-							</li>
-							<li class="btn-info" data-target="participacion-pueblos">
-								<h3>Participación de pueblos indigenas</h3>
-							</li>
-							<li class="btn-info" data-target="proceso-metodologico">
-								<h3>Proceso metodológico plan 30/30</h3>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>
 
-			<div class="section" data-title="" data-anchor="descargas">
+
+			<div class="section" data-title="" data-anchor="mapa-iniciativas">
 				<div class="row">
 					<div class="col-2 col-side-nav">
-						<div class="side-header">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item active"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="map-title">
+							<h1>Mapa de las Iniciativas Estratégicas</h1>
+							<div class="line">
+								<hr>
+							</div>
+						</div>
+						<p class="map-details">
+							Un Chile desarrollado es un país que reconoce su territorio y a los habitantes que dan vida a aquel territorio. Un Chile desarrollado no son sólo obras, son obras con sentido. El puente es inclusión, el paso fronterizo es prosperidad, el acceso es dignidad, el asfalto es oportunidad, el túnel es integración, el canal es alimento, el aeródromo es cercanía, la caleta de pescadores es fuente laboral, el embalse es futuro, el sistema de agua potable es salud, los ríos con caudal son prosperidad, la reconstrucción es confianza en nosotros mismos. Las obras son equidad.
+						</p>
+						<div class="map-wrapper">
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="desafios-norte">
+									<h3>Desafios Macrozona Norte</h3>
+								</li>
+								<li class="btn-info" data-target="desafios-centro">
+									<h3>Desafios Macrozona Centro</h3>
+								</li>
+								<li class="btn-info" data-target="desafios-sur">
+									<h3>Desafios Macrozona Sur</h3>
+								</li>
+								<li class="btn-info" data-target="desafios-austral">
+									<h3>Desafios Macrozona Austral</h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+
+			<div class="section" data-title="" data-anchor="mapa-vulnerabilidades">
+				
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item active"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="map-details">
+							<div class="map-title">
+								<h1>Mapa de las vulnerabilidades y el cambio climático</h1>
+								<div class="line">
+									<hr>
+								</div>
+							</div>
+							<p>
+								Todo está cambiando. Los ríos, las cuencas, los bordes costeros, el desierto, las ciudades y los bosques; el clima a nivel global está cambiando. 
+								También las personas están cambiando. Lo que sueñan para sus comunidades, lo que demandan a las empresas y lo que exigen a las autoridades. Todo está cambiando y la forma de planificar debe estar a la altura de este cambio.
+								Nos desafía la naturaleza, nos desafían las personas y también nuestros propios desafíos.
+							</p>
+							<p>
+								<strong class="btn-open-map" data-target="mapa-vulnerabilidades">
+									<span>Ver mapa</span>
+									<img src="images/info-regular.png" alt="">
+								</strong>
+							</p>
+						</div>
+						<div class="map-preview">
+							<img src="images/mapa-vulnerabilidades.svg" alt="">
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="infraestructura-vidas">
+									<h3>Infraestructura que salva vidas</h3>
+								</li>
+								<li class="btn-info" data-target="distribucion-agua">
+									<h3>Distribución de los usos consuntivos de agua a nivel nacional en los principales sectores productivos</h3>
+								</li>
+								<li class="btn-info" data-target="zoom-vulnerabilidad">
+									<h3>Zoom indice de vulnerabilidad social RM</h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="mapa-conectividad">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item active"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="row">
+							<div class="map-details">
+								<h1>Mapa de la integración y conectividad</h1>
+								<div class="line">
+									<hr>
+								</div>
+								<p>
+									El Plan Chile 30/30 Obras Públicas y Agua para el Desarrollo, es un instrumento de planificación estratégico de largo plazo, con una visión de desarrollo país, además de visiones territoriales por macrozona y regiones, donde se definen objetivos de largo plazo coherentes y logrables, en el ámbito de infraestructura y agua, y que se reflejan en iniciativas estratégicas consecuentes con dichas visiones.
+								</p>
+							</div>
+							<div class="col-info-map map-wrapper">
+								<div class="svg-map" id="svg-mapa-conectividad"></div>
+								<div id="svg-zoom-mapa-conectividad" class="zoom-bar"></div>-
+							</div>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="legend-info">
+							<h3>Simbología</h3>
+							<div>
+								<ul class="legend-set">
+									<li class="legend-item">
+										<img src="images/conectividad/" alt="">
+										<span>Localidades con Población Nivel A (Áreas metropolitanas)</span>
+									</li>
+									<li class="legend-item">
+										<span>Localidades con Población Nivel B (Ciudades intermedias y capitales regionales)</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Localidades con Población C (Ciudades menores)</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Pasos internacionales</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Islas</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Nodos conectores</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Conexiones terrestres</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Conexiones Maritimas</span>
+									</li>
+									<li class="legend-item">
+									  	<span>Rutas Puertos</span>
+									</li>
+									<li class="legend-item">
+										<img src="images/conectividad/aeropuertos.svg" alt="">
+									  	<span>Aeropuertos</span>
+									</li>
+									<li class="legend-item">
+										<img src="images/conectividad/aeropuertos-r1.svg" alt="">
+									  	<span>Aeródromos red primaria</span>
+									</li>
+									<li class="legend-item">
+										<img src="images/conectividad/aeropuertos-r2.svg" alt="">
+									  	<span>Aeródromos red secundaria</span>
+									</li>
+									<li class="legend-item">
+										<img src="images/conectividad/p-aerodromo.svg" alt="">
+									  	<span>Pequeños aeródromos</span>
+									</li>
+								</ul>
+								<div class="btn-action">
+									<img src="images/download_bold.svg" alt="">
+									<span>Descargar mapa</span>
+								</div>
+								<div class="btn-action">
+									<img src="images/plus_bold.svg" alt="">
+									<span>Compartir este mapa</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="niveles-motorizacion">
+									<h3>Niveles de motorización</h3>
+								</li>
+								<li class="btn-info" data-target="viajes-aereos">
+									<h3>Viajes aereos</h3>
+								</li>
+								<li class="btn-info" data-target="transporte-maritimo">
+									<h3>Transporte marítimo</h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" data-title="" data-anchor="mapa-desafios">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item active"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="row">
+							<div class="map-details">
+								<h1>Mapa de las Visiones y Desafíos</h1>
+								<div class="line">
+									<hr>
+								</div>
+								<p>
+									A nivel global, estamos pasando por un momento en que las democracias requieren una nueva cualidad: saber articular, desde el Estado, los mecanismos para entender los anhelos, los dolores, las ideas y las visiones de los territorios y desde ahí generar acuerdos de desarrollo. El desafío entonces es articular los procesos que permitan oír la voz de los territorios. Diseñar desde los territorios, mirando el territorio y escuchando al territorio.
+								</p>
+							</div>
+							<div class="col-info-map map-wrapper">
+							</div>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="desafios-ambitos-investigacion">
+									<h3>Desafíos en ámbitos de investigación</h3>
+								</li>
+								<li class="btn-info" data-target="lineas-investigacion">
+									<h3>Líneas de investigación asociadas al territorio</h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="mapa-obras">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item active"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="row">
+							<div class="map-details">
+								<h1>Mapa de obras con mirada de futuro</h1>
+								<div class="line">
+									<hr>
+								</div>
+								<p>
+									Es posible y necesario construir un Chile desarrollado económicamente y con equidad al año 2030, pues uno sin el otro no son suficientes para asegurar la calidad de vida de todos los chilenos y chilenas.
+									Un Chile desarrollado se construye entre todos y dialogando entre todos, por lo tanto las políticas públicas exitosas y permanentes en el tiempo deberán ser fruto del acuerdo, un acuerdo amplio. Las obras públicas son obras de Estado que trascienden a los gobiernos, y se hacen a través del diálogo.
+								</p>
+							</div>
+							<div class="col-info-map map-wrapper">
+							</div>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="">
+									<h3></h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="section" data-title="" data-anchor="mapa-ocde">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header maps-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item active">Mapas</a>
+								<a href="#mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#mapa-ocde" class="sub-item active"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="row">
+							<div class="map-details">
+								<h1>Mapa de la mirada OCDE</h1>
+								<div class="line">
+									<hr>
+								</div>
+								<p>
+									Los países democráticos han tomado el compromiso ético de fortalecer sus procesos de democratización, sus políticas públicas, su institucionalidad y los mecanismos que permitan mejorar los espacios de convivencia y desarrollo de oportunidades para la ciudadanía. Chile tomó este compromiso y suscribió con la OCDE un acuerdo para la realización de un estudio que mostrara nuestras fortalezas y debilidades en cuanto a infraestructura y gobernanza, y definiera las tareas que tenemos por delante para cumplir con el compromiso de desarrollarnos, alcanzando los 30 mil dólares per cápita, con sostenibilidad y equidad.
+								</p>
+							</div>
+							<div class="col-info-map map-wrapper">
+							</div>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="complementary-info">
+							<h2> Información <br>complementaria</h2>
+							<div class="line">
+								<hr>
+							</div>
+							<ul>
+								<li class="btn-info" data-target="principios-ocde">
+									<h3>Principios de la OCDE</h3>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="participa">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item active">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item">Descargas</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Un Proceso Participativo y Abierto</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<p>
+							El proceso del Plan Chile 3030 es un proceso vivo e iterativo, que no ha concluido.
+						</p>
+						<p>
+							El Ministerio de Obras Públicas está interesado en seguir conociendo las ideas de organizaciones, gremios, centro de investigación, universidades y centros educacionales a fin de plasmarlas en nuevas acciones conforme los desafíos de los territorios.
+						</p>
+						<p>
+							Para eso descarga este Mapa y utilízalo junto a tu grupo u organización y ubica en él aquellas ideas, visiones, desafíos o iniciativas que visualices para tu territorio en materias de agua e infraestructura, que ayuden a hacer de Chile un país con un desarrollo sostenible y con equidad hacia el 2030.
+						</p>
+						<p>
+							<a href="pdf/mapa-propio.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-dialogo-territorial">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
 							<div class="header-content">
 								<a href="#que-es" class="item">¿Qué es?</a>
 								<a href="#mapas" class="item">Mapas</a>
 								<a href="#participa" class="item">Participa</a>
-								<a href="#descargas" class="item active">Descargas</a>
-								<a href="" class="sub-item first active"><p>>> Mapa del diálogo territorial</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
-								<a href="" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first active"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
 							</div>
 						</div>
 					</div>
@@ -299,17 +1177,256 @@
 							<hr>
 						</div>
 						<h3>Mapa de diálogo territorial</h3>
-						<p>Más de dos años de trabajo. </p>
-						<p>
-							Más de 400 instancias de conversaciones y debates. Más de 10 mil participaciones. Miles de ideas en búsqueda de una visión de futuro
+						<p>Este mapa nos presenta la voz del territorio. Quiénes, cuántos y dónde participaron en los distintos encuentros territoriales. Un extracto de las ideas levantadas en los talleres regionales, conversatorios, consultas ciudadanas y el concurso de las 30 Mil Ideas, dirigido especialmente a estudiantes de educación superior.
 						</p>
 						<br>
 						<p>
-							Los territorios hablaron y el Ministerio de Obras Públicas escuchó para apoyar, desde la creación de infraestructura, al desarrollo sostenible de Chile con miras al 2030.
+							<a href="pdf/mapa-dialogo.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-iniciativas">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item active"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de las Iniciativas Estratégicas</h3>
+						<p>Este mapa presenta las principales iniciativas estratégicas algunas de las cuales ya se encuentran en ejecución consensuadas en los encuentros territoriales, entre ellos los talleres regionales, talleres macrozonales y taller nacional, las que además integran en su definición las propuestas de la OCDE.
 						</p>
 						<br>
 						<p>
-							<a href="" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+							<a href="pdf/mapa-iniciativas.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-vulnerabilidades">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item active"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de las Vulnerabilidades del Territorio</h3>
+						<p>Este mapa nos muestra nuestras vulnerabilidades ambientales y el desafío de resiliencia en infraestructura que se nos presentan frente al cambio climático.
+						</p>
+						<br>
+						<p>
+							<a href="pdf/mapa-vulnerabilidades.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-conectividad">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item active"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de la Integración y Conectividad</h3>
+						<p>Este mapa presenta una mirada a nuestro sistema de movilidad de personas, pasajeros y carga. Conectividad, flujos, conexiones estratégicas, territorios de frontera, pasos fronterizos e integración entre territorios. Nos presenta un Chile integrado a través de la conectividad multimodal, además de los desafíos para lograr mayor equidad territorial.
+						</p>
+						<br>
+						<p>
+							<a href="pdf/mapa-conectividad.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+			<div class="section" data-title="" data-anchor="descarga-mapa-desafios">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item active"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de las Visiones y Desafíos</h3>
+						<p>Este mapa presenta los principales desafíos que surgen de los talleres territoriales, contenidos y propuestas de los conversadores temáticos y consultas ciudadanas. También incluye las visiones macrozonales de las cuales se desprenden los desafíos regionales. Además se destacan las universidades que han tomado el compromiso de generar conocimiento para abordar los desafíos.
+						</p>
+						<br>
+						<p>
+							<a href="pdf/mapa-desafios.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-obras">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item active"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de las Obras con Mirada de Futuro</h3>
+						<p>Este mapa nos presenta los proyectos que ya están en marcha en nuestro territorio, en conformidad con los ejes estratégicos del ministerio y en sintonía con los desafíos e iniciativas estratégicas, concordadas en el marco de construcción del Plan.
+						</p>
+						<br>
+						<p>
+							<a href="pdf/mapa-obras.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
+						</p>
+					</div>
+					<div class="col-3">
+						
+					</div>
+					<div class="col-3">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="section" data-title="" data-anchor="descarga-mapa-ocde">
+				<div class="row">
+					<div class="col-2 col-side-nav">
+						<div class="side-header downloads-open">
+							<div class="header-content">
+								<a href="#que-es" class="item">¿Qué es?</a>
+								<a href="#mapas" class="item">Mapas</a>
+								<a href="#participa" class="item">Participa</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="item active">Descargas</a>
+								<a href="#descarga-mapa-dialogo-territorial" class="sub-item first"><p>>> Mapa del diálogo territorial</p></a>
+								<a href="#descarga-mapa-iniciativas" class="sub-item"><p>>> Mapa de las iniciativas estratégicas</p></a>
+								<a href="#descarga-mapa-vulnerabilidades" class="sub-item"><p>>> Mapa de las vulnerabilidades</p></a>
+								<a href="#descarga-mapa-conectividad" class="sub-item"><p>>> Mapa de la integración y conectividad</p></a>
+								<a href="#descarga-mapa-desafios" class="sub-item"><p>>> Mapa de visiones y desafíos</p></a>
+								<a href="#descarga-mapa-obras" class="sub-item"><p>>> Mapa de obras con mirada de futuro</p></a>
+								<a href="#descarga-mapa-ocde" class="sub-item active"><p>>> Mapa de la mirada OCDE</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-info">
+						<h1>Descargas</h1>
+						<div class="line">
+							<hr>
+						</div>
+						<h3>Mapa de la Mirada OCDE</h3>
+						<p>La OCDE comparó la experiencia de desarrollo de algunos países con cada una de nuestras macrozonas, dada las similitudes geográficas de nuestros territorios con éstos, y mostró vías posibles para impulsar nuestro desarrollo. El oeste de Australia para la macrozona norte, España e Italia para la macrozona centro, Nueva Zelanda para la macrozona sur y el norte de Suecia y Noruega para la macrozona austral. Este mapa presenta los principales contenidos de aquella experiencia comparada.
+						</p>
+						<br>
+						<p>
+							<a href="pdf/mapa-ocde.pdf" class="btn-descargar"><span>Descargar</span> <img src="images/download_bold.svg" alt=""></a>
 						</p>
 					</div>
 					<div class="col-3">
@@ -329,7 +1446,11 @@
 		<!-- jQuery -->
 		<script src="vendor/jquery/jquery.min.js" ></script>
 		<script src="vendor/fullpage/jquery.fullpage.min.js" ></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+		<script src="vendor/svgjs/svg.js" ></script>
+		<script src="vendor/svgjs/svg.select.min.js" ></script>
+		<script src="vendor/svgjs/svg.draggable.min.js" ></script>
+		<script src="vendor/svgjs/svg.panzoom.min.js" ></script>
+		
 		<script src="js/desktop.js"></script>
 	</body>
 </html>
